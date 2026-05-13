@@ -1,0 +1,336 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #fce8d8;
+  font-family: 'Quicksand', system-ui, sans-serif;
+  color: #3a2532;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+a { color: inherit; }
+button { font-family: inherit; }
+
+::selection { background: #ec5b9b; color: #fff; }
+
+body { padding: 32px 0 48px; }
+
+.om-frame {
+  width: 1280px;
+  margin: 0 auto;
+  background: #ffffff;
+  box-shadow: 0 24px 80px -30px rgba(58, 37, 50, 0.18);
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+/* Frame goes edge-to-edge below 1300px */
+@media (max-width: 1300px) {
+  body { padding: 0; }
+  .om-frame { width: 100%; box-shadow: none; }
+}
+
+/* ---- Header ---- */
+.hdr-root {
+  box-shadow: 0 1px 6px rgba(58,37,50,0.06);
+  transition: box-shadow 0.3s ease-out;
+}
+.hdr-root--compact { box-shadow: 0 4px 20px rgba(58,37,50,0.13); }
+
+/* White top section — max-height close to actual content so animation starts immediately */
+.hdr-top {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 8px 56px 20px;
+  overflow: hidden;
+  max-height: 140px;
+  transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+}
+.hdr-right { display: flex; justify-content: flex-end; align-items: center; }
+.hdr-logo { height: 72px; transition: height 0.3s ease-out; }
+.hdr-socials { display: flex; gap: 10px; transition: opacity 0.2s ease-out; }
+.hdr-tagline { transition: opacity 0.2s ease-out; }
+.hdr-hamburger { display: none; }
+
+/* Desktop scrolled — top shrinks to same visual height as pink nav */
+.hdr-root--compact .hdr-top { padding: 7px 56px; max-height: 52px; }
+.hdr-root--compact .hdr-logo { height: 34px; }
+.hdr-root--compact .hdr-tagline { opacity: 0; pointer-events: none; }
+.hdr-root--compact .hdr-socials { opacity: 0; pointer-events: none; }
+
+/* Pink nav — centered, never changes on desktop */
+.hdr-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 56px;
+  padding: 14px 56px;
+}
+
+/* ---- Mobile ---- */
+@media (max-width: 768px) {
+  /* Keep the grid — just tighten padding, hide tagline/socials */
+  .hdr-top { padding: 10px 16px; max-height: 80px; }
+  .hdr-tagline { display: none; }
+  .hdr-socials { display: none; }
+  .hdr-logo { height: 44px; }
+
+  /* Hamburger sits in the right grid column, invisible until scrolled */
+  .hdr-hamburger {
+    display: flex;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease-out;
+  }
+
+  /* Pink nav — one horizontal line, collapses smoothly on scroll */
+  .hdr-nav {
+    flex-wrap: nowrap;
+    padding: 10px 8px;
+    gap: 0;
+    max-height: 60px;
+    overflow: hidden;
+    opacity: 1;
+    transition: max-height 0.3s ease-out, opacity 0.25s ease-out, padding 0.3s ease-out;
+  }
+  .hdr-nav-link {
+    flex: 1;
+    text-align: center;
+    font-size: clamp(9px, 2.8vw, 13px) !important;
+    letter-spacing: 0.3px !important;
+    white-space: nowrap;
+  }
+
+  /* Mobile scrolled — top shrinks, hamburger fades in, pink nav collapses */
+  .hdr-root--compact .hdr-top { padding: 8px 16px; max-height: 52px; }
+  .hdr-root--compact .hdr-logo { height: 32px; }
+  .hdr-root--compact .hdr-hamburger { opacity: 1; pointer-events: auto; }
+  .hdr-root--compact .hdr-nav { max-height: 0; opacity: 0; padding-top: 0; padding-bottom: 0; }
+}
+
+/* Mobile dropdown entrance */
+.hdr-mobile-menu { animation: hdrSlideDown 0.22s ease-out; }
+@keyframes hdrSlideDown {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ---- Hero ---- */
+.hero-outer { padding: 48px 56px 0; position: relative; }
+.hero-grid {
+  display: grid;
+  grid-template-columns: auto 1.4fr auto;
+  gap: 40px;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+@media (max-width: 960px) {
+  .hero-outer { padding: 32px 24px 0; }
+  .hero-grid { grid-template-columns: 1fr; justify-items: center; gap: 28px; text-align: center; }
+  .hero-h1 { font-size: 44px !important; }
+  .hero-body { text-align: left; }
+  .hero-pills-col { display: flex; flex-direction: column; align-items: center; }
+  .hero-cta { display: flex; justify-content: center; }
+}
+
+/* ---- Wave full-bleed (counteracts section horizontal padding) ---- */
+.wave-bleed { margin: 0 -56px; }
+@media (max-width: 960px) { .wave-bleed { margin: 0 -24px; } }
+
+/* ---- Services grid (home) ---- */
+.svc-outer { padding: 8px 56px 80px; }
+.svc-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 260px;
+  gap: 18px;
+}
+
+@media (max-width: 960px) {
+  .svc-outer { padding: 8px 24px 48px; }
+  .svc-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: auto; min-height: 200px; }
+}
+@media (max-width: 580px) {
+  .svc-grid { grid-template-columns: 1fr; }
+}
+
+/* ---- About block ---- */
+.about-sec { padding: 80px 56px; }
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "label image" "body image";
+  column-gap: 56px;
+  row-gap: 0;
+  align-items: start;
+}
+.about-label-cell { grid-area: label; }
+.about-body-cell  { grid-area: body; }
+.about-img-col    { grid-area: image; align-self: center; }
+
+@media (max-width: 768px) {
+  .about-sec { padding: 48px 24px; }
+  .about-grid {
+    grid-template-columns: 1fr;
+    grid-template-areas: "label" "image" "body";
+    row-gap: 24px;
+  }
+  .about-img-col { max-width: 480px; margin: 0 auto; width: 100%; }
+  .about-h2 { font-size: 36px !important; }
+}
+
+/* ---- Testimonials ---- */
+.tmono-sec { padding: 80px 56px; }
+.tmono-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 18px; }
+
+@media (max-width: 768px) {
+  .tmono-sec { padding: 48px 24px; }
+  .tmono-kicker { font-size: 26px !important; }
+  .tmono-h2 { font-size: 36px !important; }
+}
+
+/* ---- CTA Banner ---- */
+.cta-sec { padding: 56px 56px; }
+.cta-inner {
+  border-radius: 28px;
+  padding: 56px 48px;
+  display: grid;
+  grid-template-columns: 1.4fr auto;
+  gap: 32px;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .cta-sec { padding: 32px 16px; }
+  .cta-inner { grid-template-columns: 1fr; padding: 40px 28px; text-align: center; justify-items: center; gap: 20px; }
+  .cta-h3 { font-size: 32px !important; }
+}
+
+/* ---- Footer ---- */
+.ftr-sec { padding: 56px 56px 32px; }
+.ftr-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 32px; align-items: start; }
+.ftr-bottom {
+  border-top: 1px solid rgba(255,255,255,0.25);
+  margin-top: 40px;
+  padding-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+@media (max-width: 900px) {
+  .ftr-grid { grid-template-columns: 1fr 1fr; }
+  .ftr-sec { padding: 40px 24px 24px; }
+}
+@media (max-width: 580px) {
+  .ftr-grid { grid-template-columns: 1fr; }
+}
+
+/* ---- Services index page ---- */
+.svc-index-sec { padding: 40px 56px 80px; }
+.svc-index-row {
+  display: grid;
+  grid-template-columns: 1.4fr 2fr auto;
+  gap: 32px;
+  align-items: center;
+}
+.svc-index-price { text-align: right; }
+
+@media (max-width: 900px) {
+  .svc-index-sec { padding: 24px 24px 48px; }
+  .svc-index-row { grid-template-columns: 1fr; gap: 16px; }
+  .svc-index-price { text-align: left; }
+}
+
+/* ---- Service detail page ---- */
+.svc-detail-outer { padding: 56px 56px 64px; }
+.svc-detail-hero { display: grid; grid-template-columns: 1.5fr 1fr; gap: 48px; align-items: center; }
+.svc-detail-included { padding: 72px 56px; }
+.included-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 56px; align-items: start; }
+.svc-pricing-sec { padding: 72px 56px; }
+.svc-pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.svc-faq-sec { padding: 72px 56px; }
+
+@media (max-width: 960px) {
+  .svc-detail-outer { padding: 36px 24px 40px; }
+  .svc-detail-hero { grid-template-columns: 1fr; }
+  .svc-hero-img { display: none; }
+  .svc-detail-h1 { font-size: 48px !important; }
+  .svc-detail-included { padding: 48px 24px; }
+  .included-grid { grid-template-columns: 1fr; }
+  .svc-pricing-sec { padding: 48px 24px; }
+  .svc-pricing-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
+  .svc-pricing-grid > div { transform: none !important; }
+  .svc-faq-sec { padding: 48px 24px; }
+}
+
+/* ---- About page ---- */
+.about-page-hero { padding: 64px 56px 32px; }
+.about-page-sec { padding: 32px 56px 80px; }
+.about-page-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+.approach-sec { padding: 72px 56px; }
+.approach-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.cred-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+@media (max-width: 768px) {
+  .about-page-hero { padding: 40px 24px 24px; }
+  .about-page-hero h1 { font-size: 44px !important; }
+  .about-page-sec { padding: 24px 24px 48px; }
+  .about-page-grid { grid-template-columns: 1fr; }
+  .about-page-img-col { max-width: 480px; margin: 0 auto; width: 100%; }
+  .approach-sec { padding: 48px 24px; }
+  .approach-grid { grid-template-columns: 1fr; }
+  .cred-grid { grid-template-columns: 1fr; }
+}
+
+/* ---- Contact page ---- */
+.contact-hero { padding: 56px 56px 24px; }
+.contact-sec { padding: 32px 56px 80px; }
+.contact-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 40px; align-items: start; }
+
+@media (max-width: 768px) {
+  .contact-hero { padding: 40px 24px 20px; }
+  .contact-hero h1 { font-size: 44px !important; }
+  .contact-sec { padding: 24px 24px 48px; }
+  .contact-grid { grid-template-columns: 1fr; }
+}
+
+/* ---- Contact form ---- */
+.form-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+@media (max-width: 600px) {
+  .form-2col { grid-template-columns: 1fr; }
+}
+
+/* ---- Reviews page ---- */
+.reviews-hero { padding: 56px 56px 32px; }
+
+@media (max-width: 768px) {
+  .reviews-hero { padding: 40px 24px 24px; }
+  .reviews-hero h1 { font-size: 44px !important; }
+}
+
+/* ---- Services index header ---- */
+.svc-index-hero { padding: 56px 56px 24px; }
+
+@media (max-width: 768px) {
+  .svc-index-hero { padding: 40px 24px 20px; }
+  .svc-index-hero h1 { font-size: 44px !important; }
+}
+
+/* ---- Section headers ---- */
+@media (max-width: 768px) {
+  .sec-hdr-h2 { font-size: 36px !important; }
+  .sec-hdr-kicker { font-size: 26px !important; }
+}
