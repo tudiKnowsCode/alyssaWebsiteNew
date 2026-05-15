@@ -7,7 +7,7 @@ export function Footer() {
     <footer className="ftr-sec" style={{ background: T.pink, color: "#fff" }}>
       <div className="ftr-grid">
         <div>
-          <img src="/nav.svg" alt="Alyssa Tudino" style={{ height: 56, display: "block" }} />
+          <img src="/nav.png" alt="Alyssa Tudino" loading="lazy" decoding="async" style={{ height: 56, display: "block" }} />
           <p style={{ fontFamily: T.body, fontSize: 14, lineHeight: 1.6, marginTop: 18, maxWidth: 320, opacity: 0.92 }}>
             Where learning is supported every step of the way.
           </p>

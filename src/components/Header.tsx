@@ -19,9 +19,24 @@ export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 60);
+    // Initialise from real scroll position so browser scroll-restore doesn't flash
+    setScrolled(window.scrollY > 80);
+
+    let rafId: number;
+    const onScroll = () => {
+      cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(() => {
+        const y = window.scrollY;
+        // Hysteresis: engage at 80px, disengage only when back below 30px.
+        // The dead-band prevents flickering when bouncing near the threshold.
+        setScrolled(prev => (prev ? y > 30 : y > 80));
+      });
+    };
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      cancelAnimationFrame(rafId);
+    };
   }, []);
 
   useEffect(() => {
@@ -44,9 +59,11 @@ export function Header() {
         <div style={{ textAlign: "center" }}>
           <Link href="/" style={{ textDecoration: "none", display: "block" }}>
             <img
-              src="/nav.svg"
+              src="/nav.png"
               alt="Alyssa Tudino"
               className="hdr-logo"
+              fetchPriority="high"
+              decoding="sync"
               style={{ display: "block", margin: "0 auto" }}
             />
           </Link>

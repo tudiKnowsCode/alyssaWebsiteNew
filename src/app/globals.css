@@ -6,6 +6,17 @@ html, body {
   color: #3a2532;
 }
 
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
 *, *::before, *::after {
   box-sizing: border-box;
 }
@@ -36,12 +47,14 @@ body { padding: 32px 0 48px; }
 
 /* ---- Header ---- */
 .hdr-root {
+  /* Promote to own GPU compositor layer — sticky scroll & transitions run off main thread */
+  will-change: transform;
+  /* Shadow snaps instantly; the collapse animation draws the eye anyway */
   box-shadow: 0 1px 6px rgba(58,37,50,0.06);
-  transition: box-shadow 0.3s ease-out;
 }
 .hdr-root--compact { box-shadow: 0 4px 20px rgba(58,37,50,0.13); }
 
-/* White top section — max-height close to actual content so animation starts immediately */
+/* White top section */
 .hdr-top {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
@@ -53,8 +66,8 @@ body { padding: 32px 0 48px; }
 }
 .hdr-right { display: flex; justify-content: flex-end; align-items: center; }
 .hdr-logo { height: 72px; transition: height 0.3s ease-out; }
-.hdr-socials { display: flex; gap: 10px; transition: opacity 0.2s ease-out; }
-.hdr-tagline { transition: opacity 0.2s ease-out; }
+.hdr-socials { display: flex; gap: 10px; will-change: opacity; transition: opacity 0.2s ease-out; }
+.hdr-tagline { will-change: opacity; transition: opacity 0.2s ease-out; }
 .hdr-hamburger { display: none; }
 
 /* Desktop scrolled — top shrinks to same visual height as pink nav */
@@ -86,6 +99,7 @@ body { padding: 32px 0 48px; }
     align-items: center;
     opacity: 0;
     pointer-events: none;
+    will-change: opacity;
     transition: opacity 0.25s ease-out;
   }
 
@@ -97,6 +111,7 @@ body { padding: 32px 0 48px; }
     max-height: 60px;
     overflow: hidden;
     opacity: 1;
+    will-change: opacity;
     transition: max-height 0.3s ease-out, opacity 0.25s ease-out, padding 0.3s ease-out;
   }
   .hdr-nav-link {
@@ -120,6 +135,14 @@ body { padding: 32px 0 48px; }
   from { opacity: 0; transform: translateY(-6px); }
   to   { opacity: 1; transform: translateY(0); }
 }
+
+/* ---- Below-fold rendering optimisation ---- */
+/* Browser skips layout/paint for off-screen sections; intrinsic-size prevents scroll-bar jumps */
+.about-sec   { content-visibility: auto; contain-intrinsic-size: 0 500px; }
+.svc-outer   { content-visibility: auto; contain-intrinsic-size: 0 800px; }
+.tmono-sec   { content-visibility: auto; contain-intrinsic-size: 0 600px; }
+.cta-sec     { content-visibility: auto; contain-intrinsic-size: 0 350px; }
+.ftr-sec     { content-visibility: auto; contain-intrinsic-size: 0 400px; }
 
 /* ---- Hero ---- */
 .hero-outer { padding: 48px 56px 0; position: relative; }
