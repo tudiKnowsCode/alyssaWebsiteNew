@@ -34,7 +34,7 @@ export default function AboutPage() {
                 <ImageTile label="alyssa portrait" bg={T.pinkSoft} radius={18} h="min(560px, 75vw)" />
               </div>
               <div style={{ position: "absolute", top: -16, right: -16, background: T.yellow, color: T.ink, fontFamily: T.script, fontSize: 30, padding: "8px 22px", borderRadius: 999, transform: "rotate(8deg)", boxShadow: "0 4px 0 rgba(58,37,50,0.12)" }}>
-                NYC · since 2017
+                since 2019
               </div>
             </div>
             <div style={{ marginTop: 32, padding: 28, background: T.pinkSoft, borderRadius: 22 }}>

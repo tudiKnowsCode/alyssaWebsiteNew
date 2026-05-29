@@ -30,6 +30,7 @@ export interface Service {
   grades: string;
   color: string;
   colorDeep: string;
+  image: string;
   blurb: string;
   long: string;
   included: string;
@@ -47,6 +48,7 @@ export const SERVICES: Service[] = [
     grades: "Grades K–12",
     color: T.mint,
     colorDeep: "#7fc4ba",
+    image: "/skill-building.jpg",
     blurb: "Personalized tutoring designed to strengthen academic skills, build confidence, and support what students are learning in school.",
     long: "Individualized tutoring sessions are designed to meet each student where they are and support their growth in a structured, encouraging way. Instruction is tailored to align with classroom expectations while also addressing each student's unique learning style, pace, and areas of need.",
     included: "The goal of tutoring is not only to improve academic performance, but also to build confidence, independence, and a more positive approach to learning over time. ",
@@ -121,6 +123,7 @@ export const SERVICES: Service[] = [
     grades: "Grades K–12",
     color: T.pinkSoft,
     colorDeep: "#e87aa6",
+    image: "/guided-support.jpg",
     blurb:
       "A collaborative approach that helps align tutoring with classroom learning and keeps families informed and supported.",
     long: "This service is designed to create consistency between tutoring and what is happening in the classroom. With parent permission, communication and collaboration help ensure that instruction is aligned with classroom expectations and that students receive cohesive support across environments.",
@@ -192,6 +195,7 @@ export const SERVICES: Service[] = [
     grades: "Parents & students",
     color: T.peachSoft,
     colorDeep: "#e88a64",
+    image: "/meeting-prep.jpg",
     blurb:
       "Support to help families feel prepared, informed, and confident going into school meetings.",
     long: "School meetings can often feel overwhelming for families. This service is designed to provide guidance and clarity so families feel prepared and confident in understanding their child's needs and next steps.",

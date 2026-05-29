@@ -82,31 +82,6 @@ export function Header() {
           </div>
         </div>
         <div className="hdr-right">
-          <div className="hdr-socials">
-            {[
-              { l: "IG", c: T.pink },
-              { l: "FB", c: T.pinkHot },
-              { l: "Tk", c: T.pinkDeep },
-            ].map((s, i) => (
-              <span
-                key={i}
-                style={{
-                  width: 34,
-                  height: 34,
-                  borderRadius: "50%",
-                  background: s.c,
-                  color: "#fff",
-                  display: "grid",
-                  placeItems: "center",
-                  fontFamily: T.body,
-                  fontWeight: 700,
-                  fontSize: 12,
-                }}
-              >
-                {s.l}
-              </span>
-            ))}
-          </div>
           <button
             className="hdr-hamburger"
             onClick={() => setMenuOpen((v) => !v)}

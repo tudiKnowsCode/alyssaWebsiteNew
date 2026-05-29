@@ -20,7 +20,7 @@ export default function ContactPage() {
       </section>
       <section className="contact-sec" style={{ background: T.paper }}>
         <div className="contact-grid">
-          <div style={{ background: T.pinkSoft, borderRadius: 24, padding: 32, display: "grid", gap: 18 }}>
+          <div style={{ background: T.pinkSoft, borderRadius: 24, padding: "clamp(16px, 4vw, 32px)", display: "grid", gap: 18 }}>
             <div>
               <div style={{ fontFamily: T.script, fontSize: 36, color: T.pink, lineHeight: 1 }}>How to reach me</div>
               <div style={{ fontFamily: T.display, fontSize: 28, fontWeight: 700, color: T.ink, marginTop: 4 }}>Three easy ways.</div>
@@ -28,7 +28,7 @@ export default function ContactPage() {
             {([["Email", C.email, T.mint], ["Phone", C.phone, T.peachSoft], ["Instagram", C.ig, T.yellow]] as const).map(([k, v, c]) => (
               <div key={k} style={{ background: c, borderRadius: 16, padding: "16px 20px" }}>
                 <div style={{ fontFamily: T.body, fontSize: 11, letterSpacing: 2, textTransform: "uppercase", color: T.ink, opacity: 0.7 }}>{k}</div>
-                <div style={{ fontFamily: T.display, fontSize: 22, color: T.ink, fontWeight: 700, marginTop: 2 }}>{v}</div>
+                <div style={{ fontFamily: T.display, fontSize: "clamp(14px, 3.5vw, 22px)", color: T.ink, fontWeight: 700, marginTop: 2, wordBreak: "break-all" }}>{v}</div>
               </div>
             ))}
             <div style={{ padding: "12px 4px", fontFamily: T.body, fontSize: 14, color: T.ink }}>

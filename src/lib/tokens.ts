@@ -15,7 +15,7 @@ export const T = {
   ink: "#3a2532",
   inkSoft: "rgba(58,37,50,0.75)",
   inkMute: "rgba(58,37,50,0.55)",
-  script: "var(--font-allison), 'Dancing Script', cursive",
-  display: "var(--font-luckiest-guy), 'Luckiest Guy', cursive",
+  script: "var(--font-allura), 'Allura', cursive",
+  display: "var(--font-cormorant-garamond), 'Cormorant Garamond', serif",
   body: "var(--font-quicksand), 'Quicksand', system-ui, sans-serif",
 };

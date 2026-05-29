@@ -44,7 +44,7 @@ export function ContactForm() {
   return (
     <form
       onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }}
-      style={{ background: T.paper, border: `2px solid ${T.pinkSoft}`, borderRadius: 24, padding: 32, display: "grid", gap: 16 }}
+      style={{ background: T.paper, border: `2px solid ${T.pinkSoft}`, borderRadius: 24, padding: "clamp(16px, 4vw, 32px)", display: "grid", gap: 16 }}
     >
       <div style={{ fontFamily: T.script, fontSize: 36, color: T.pink, lineHeight: 1 }}>Tell me a bit</div>
       <div style={{ fontFamily: T.display, fontSize: 28, fontWeight: 700, color: T.ink, marginTop: -6 }}>about your student</div>

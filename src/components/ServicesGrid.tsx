@@ -3,7 +3,6 @@
 import { T } from "@/lib/tokens";
 import { SERVICES } from "@/lib/data";
 import { SectionHeader } from "./ui/SectionHeader";
-import { ImageTile } from "./ui/ImageTile";
 import { BigButton } from "./ui/BigButton";
 import { useRouter } from "next/navigation";
 
@@ -12,11 +11,11 @@ export function ServicesGrid() {
 
   const cells = [
     { type: "service" as const, s: SERVICES[0] },
-    { type: "image" as const, label: "students at the kitchen table", bg: T.lilac },
+    { type: "image" as const, s: SERVICES[0] },
     { type: "service" as const, s: SERVICES[2] },
-    { type: "image" as const, label: "alyssa working with a student", bg: T.mint },
+    { type: "image" as const, s: SERVICES[2] },
     { type: "service" as const, s: SERVICES[1] },
-    { type: "image" as const, label: "study materials · still life", bg: T.sky },
+    { type: "image" as const, s: SERVICES[1] },
   ];
 
   return (
@@ -27,7 +26,17 @@ export function ServicesGrid() {
       <div className="svc-grid" style={{ marginTop: 40 }}>
         {cells.map((c, i) => {
           if (c.type === "image") {
-            return <ImageTile key={i} label={c.label} bg={c.bg} color="rgba(255,255,255,0.85)" radius={20} />;
+            return (
+              <div key={i} style={{ borderRadius: 20, overflow: "hidden" }}>
+                <img
+                  src={c.s.image}
+                  alt={c.s.short}
+                  loading="lazy"
+                  decoding="async"
+                  style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+                />
+              </div>
+            );
           }
           const s = c.s;
           return (

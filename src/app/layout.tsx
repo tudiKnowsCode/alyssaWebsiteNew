@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Allison, Luckiest_Guy, Quicksand } from "next/font/google";
+import { Allura, Cormorant_Garamond, Quicksand } from "next/font/google";
 import "./globals.css";
 
 const quicksand = Quicksand({
@@ -9,17 +9,17 @@ const quicksand = Quicksand({
   display: "swap",
 });
 
-const luckiestGuy = Luckiest_Guy({
+const cormorantGaramond = Cormorant_Garamond({
   subsets: ["latin"],
-  weight: ["400"],
-  variable: "--font-luckiest-guy",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-cormorant-garamond",
   display: "swap",
 });
 
-const allison = Allison({
+const allura = Allura({
   subsets: ["latin"],
   weight: ["400"],
-  variable: "--font-allison",
+  variable: "--font-allura",
   display: "swap",
 });
 
@@ -41,7 +41,7 @@ export default function RootLayout({
         <meta name="color-scheme" content="light" />
       </head>
       <body
-        className={`${quicksand.variable} ${luckiestGuy.variable} ${allison.variable}`}
+        className={`${quicksand.variable} ${cormorantGaramond.variable} ${allura.variable}`}
       >
         <div className="om-frame">{children}</div>
       </body>

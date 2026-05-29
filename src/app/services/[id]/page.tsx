@@ -4,7 +4,6 @@ import { T } from "@/lib/tokens";
 import { SERVICES, FAQS } from "@/lib/data";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { ImageTile } from "@/components/ui/ImageTile";
 import { BigButton } from "@/components/ui/BigButton";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { CtaBanner } from "@/components/CtaBanner";
@@ -54,7 +53,13 @@ export default function ServicePage() {
           <div className="svc-hero-img" style={{ position: "relative" }}>
             <div style={{ position: "absolute", inset: -10, transform: "rotate(4deg)", background: T.paper, borderRadius: 24 }} />
             <div style={{ position: "relative", padding: 8, background: T.paper, borderRadius: 22, boxShadow: "0 12px 32px -10px rgba(58,37,50,0.18)" }}>
-              <ImageTile label={s.short.toLowerCase()} bg={s.colorDeep} radius={16} h={340} />
+              <img
+                src={s.image}
+                alt={s.short}
+                loading="lazy"
+                decoding="async"
+                style={{ width: "100%", height: 340, objectFit: "cover", display: "block", borderRadius: 16 }}
+              />
             </div>
           </div>
         </div>
@@ -62,26 +67,42 @@ export default function ServicePage() {
 
       {/* What's included */}
       <section className="svc-detail-included" style={{ background: T.paper }}>
-        <div className="included-grid">
-          <div>
-            <h2 style={{ fontFamily: T.display, fontSize: 56, fontWeight: 700, color: T.pink, margin: "4px 0 0", lineHeight: 1.05, letterSpacing: -0.3 }}>
-              {s.included}
-            </h2>
-            <p style={{ fontFamily: T.body, fontSize: 15, lineHeight: 1.6, color: T.inkSoft, marginTop: 16, maxWidth: 380 }}>
-              {s.sessionLen} sessions, in person or online.
-            </p>
+        {(s.id === "skills" || s.id === "meeting") ? (
+          <>
+            <h2 style={{ fontFamily: T.display, fontSize: 42, fontWeight: 700, color: T.pink, margin: "0 0 24px", lineHeight: 1 }}>What's Included:</h2>
+            <ul className="bullets-2col" style={{ listStyle: "none", padding: 0, margin: 0, display: "grid", gap: 14 }}>
+              {s.bullets.map((b, i) => (
+                <li key={i} style={{ display: "grid", gridTemplateColumns: "44px 1fr", gap: 16, alignItems: "center", borderRadius: 16, padding: "16px 22px" }}>
+                  <span style={{ width: 36, height: 36, borderRadius: "50%", background: s.colorDeep, color: "#fff", display: "grid", placeItems: "center", fontFamily: T.display, fontSize: 18, fontWeight: 700 }}>
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span style={{ fontFamily: T.body, fontSize: 16, color: T.ink }}>{b}</span>
+                </li>
+              ))}
+            </ul>
+          </>
+        ) : (
+          <div className="included-grid">
+            <div>
+              <h2 style={{ fontFamily: T.display, fontSize: 56, fontWeight: 700, color: T.pink, margin: "4px 0 0", lineHeight: 1.05, letterSpacing: -0.3 }}>
+                {s.included}
+              </h2>
+              <p style={{ fontFamily: T.body, fontSize: 15, lineHeight: 1.6, color: T.inkSoft, marginTop: 16, maxWidth: 380 }}>
+                {s.sessionLen} sessions, in person or online.
+              </p>
+            </div>
+            <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "grid", gap: 14 }}>
+              {s.bullets.map((b, i) => (
+                <li key={i} style={{ display: "grid", gridTemplateColumns: "44px 1fr", gap: 16, alignItems: "center", background: i % 2 === 0 ? T.cream : T.pinkSoft, borderRadius: 16, padding: "16px 22px" }}>
+                  <span style={{ width: 36, height: 36, borderRadius: "50%", background: s.colorDeep, color: "#fff", display: "grid", placeItems: "center", fontFamily: T.display, fontSize: 18, fontWeight: 700 }}>
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span style={{ fontFamily: T.body, fontSize: 16, color: T.ink }}>{b}</span>
+                </li>
+              ))}
+            </ul>
           </div>
-          <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "grid", gap: 14 }}>
-            {s.bullets.map((b, i) => (
-              <li key={i} style={{ display: "grid", gridTemplateColumns: "44px 1fr", gap: 16, alignItems: "center", background: i % 2 === 0 ? T.cream : T.pinkSoft, borderRadius: 16, padding: "16px 22px" }}>
-                <span style={{ width: 36, height: 36, borderRadius: "50%", background: s.colorDeep, color: "#fff", display: "grid", placeItems: "center", fontFamily: T.display, fontSize: 18, fontWeight: 700 }}>
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <span style={{ fontFamily: T.body, fontSize: 16, color: T.ink }}>{b}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
+        )}
       </section>
 
       {/* Pricing */}

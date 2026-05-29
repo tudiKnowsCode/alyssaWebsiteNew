@@ -66,7 +66,6 @@ body { padding: 32px 0 48px; }
 }
 .hdr-right { display: flex; justify-content: flex-end; align-items: center; }
 .hdr-logo { height: 72px; transition: height 0.3s ease-out; }
-.hdr-socials { display: flex; gap: 10px; will-change: opacity; transition: opacity 0.2s ease-out; }
 .hdr-tagline { will-change: opacity; transition: opacity 0.2s ease-out; }
 .hdr-hamburger { display: none; }
 
@@ -74,7 +73,6 @@ body { padding: 32px 0 48px; }
 .hdr-root--compact .hdr-top { padding: 7px 56px; max-height: 52px; }
 .hdr-root--compact .hdr-logo { height: 34px; }
 .hdr-root--compact .hdr-tagline { opacity: 0; pointer-events: none; }
-.hdr-root--compact .hdr-socials { opacity: 0; pointer-events: none; }
 
 /* Pink nav — centered, never changes on desktop */
 .hdr-nav {
@@ -90,7 +88,6 @@ body { padding: 32px 0 48px; }
   /* Keep the grid — just tighten padding, hide tagline/socials */
   .hdr-top { padding: 10px 16px; max-height: 80px; }
   .hdr-tagline { display: none; }
-  .hdr-socials { display: none; }
   .hdr-logo { height: 44px; }
 
   /* Hamburger sits in the right grid column, invisible until scrolled */
@@ -276,6 +273,22 @@ body { padding: 32px 0 48px; }
   .svc-index-price { text-align: left; }
 }
 
+/* ---- Skills bullet 2-col layout ---- */
+.bullets-2col { grid-template-columns: repeat(2, 1fr); }
+@media (max-width: 720px) { .bullets-2col { grid-template-columns: 1fr; } }
+
+/* 1-col (≤720px): simple alternating */
+.bullets-2col li:nth-child(odd)  { background: #fce8d8; }
+.bullets-2col li:nth-child(even) { background: #fbd3da; }
+
+/* 2-col (>720px): checkerboard — B A / A B / B A */
+@media (min-width: 721px) {
+  .bullets-2col li:nth-child(4n+1) { background: #fbd3da; }
+  .bullets-2col li:nth-child(4n+2) { background: #fce8d8; }
+  .bullets-2col li:nth-child(4n+3) { background: #fce8d8; }
+  .bullets-2col li:nth-child(4n+4) { background: #fbd3da; }
+}
+
 /* ---- Service detail page ---- */
 .svc-detail-outer { padding: 56px 56px 64px; }
 .svc-detail-hero { display: grid; grid-template-columns: 1.5fr 1fr; gap: 48px; align-items: center; }
@@ -325,8 +338,11 @@ body { padding: 32px 0 48px; }
 @media (max-width: 768px) {
   .contact-hero { padding: 40px 24px 20px; }
   .contact-hero h1 { font-size: 44px !important; }
-  .contact-sec { padding: 24px 24px 48px; }
+  .contact-sec { padding: 24px 16px 48px; }
   .contact-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 400px) {
+  .contact-hero h1 { font-size: 36px !important; }
 }
 
 /* ---- Contact form ---- */
