@@ -1,9 +1,10 @@
 import { T } from "./tokens";
 
 export const SUBJECT_PILLS = [
-  { label: "Math · K–12", bg: "#f8d471" },
+  { label: "Math", bg: "#f8d471" },
   { label: "Reading & writing", bg: "#b8dfd9" },
-  { label: "Science", bg: "#fbc7a8" },
+  { label: "study skills", bg: "#a8b0fb" },
+  { label: "executive functioning", bg: "#fbc7a8" },
   { label: "Social studies", bg: "#b0dde7" },
   { label: "Test prep", bg: "#fbd3da" },
   { label: "College essays", bg: "#d6bbe0" },
@@ -43,14 +44,14 @@ export interface Service {
 export const SERVICES: Service[] = [
   {
     id: "skills",
-    short: "Tutoring & Skill Building",
-    name: "Tutoring & Skill Building",
+    short: "Academic Support",
+    name: "Academic Support",
     grades: "Grades K–12",
     color: T.mint,
     colorDeep: "#7fc4ba",
     image: "/skill-building.jpg",
-    blurb: "Personalized tutoring designed to strengthen academic skills, build confidence, and support what students are learning in school.",
-    long: "Individualized tutoring sessions are designed to meet each student where they are and support their growth in a structured, encouraging way. Instruction is tailored to align with classroom expectations while also addressing each student's unique learning style, pace, and areas of need.",
+    blurb: "Personalized instruction focused on skill development, confidence, and academic growth.",
+    long: "Personalized instruction focused on skill development, confidence, and academic growth.",
     included: "The goal of tutoring is not only to improve academic performance, but also to build confidence, independence, and a more positive approach to learning over time. ",
     bullets: [
       "Reading comprehension and fluency",
@@ -118,15 +119,15 @@ export const SERVICES: Service[] = [
   },
   {
     id: "support",
-    short: "Tutoring & Guided Support",
-    name: "Tutoring & Guided Support",
+    short: "Academic and Educational Support",
+    name: "Academic and Educational Support",
     grades: "Grades K–12",
     color: T.pinkSoft,
     colorDeep: "#e87aa6",
     image: "/guided-support.jpg",
     blurb:
-      "A collaborative approach that helps align tutoring with classroom learning and keeps families informed and supported.",
-    long: "This service is designed to create consistency between tutoring and what is happening in the classroom. With parent permission, communication and collaboration help ensure that instruction is aligned with classroom expectations and that students receive cohesive support across environments.",
+      "Comprehensive student and family support that combines individualized instruction with educational guidance, school collaboration, and home-school partnership.",
+    long: "Comprehensive student and family support that combines individualized instruction with educational guidance, school collaboration, and home-school partnership.",
     included: "Includes everything in Academic Tutoring & Skill Building, plus the following: ",
     bullets: [
       "Communication with classroom teachers to align goals and expectations",
@@ -293,15 +294,15 @@ export const ABOUT_HOME = {
   label: "Meet Alyssa",
   headline: "What Does a Learning Specialist & Family Support Partner Do?",
   paras: [
-    "I provide individualized instruction tailored to your child's needs, helping build skills, confidence, and independence in alignment with what they're learning in school.",
-    "With your permission, I help bridge communication between home and school so learning is consistent, clear, and supported across environments.",
-    "I help families better understand their child's progress, school expectations, and ways to support learning at home—so you feel informed and confident every step of the way.",
+    "I provide individualized, strengths-based support designed to help students build the academic skills, confidence, and independence needed to thrive in school and beyond. Instruction is tailored to each child's unique learning profile and aligned with their educational goals.",
+    "As a trusted partner for families, I help create meaningful connections between home and school. With your permission, I can support communication, clarify educational information, and help ensure that everyone involved in your child's learning is working toward shared goals.",
+    "I also guide families in understanding their child's progress, educational supports, and learning needs, empowering you with the knowledge and tools to confidently support growth at home and advocate for your child's success.",
   ],
   credentials: [
-    "M.Ed. · New York University",
-    "B.A. English · Vassar College",
-    "NY-certified (K–6 + 7–12 ELA)",
-    "8+ years · 240+ students",
+    "B.S. Special Education · UCONN",
+    "M.A. Educational Psychology · UCONN",
+    "6th Year · CCSU",
+    "CT-certified K-12",
   ],
 };
 
@@ -315,10 +316,10 @@ export const ABOUT = {
     "Through my work in schools, I've seen just how powerful it is when families and educators are truly working together. That's what inspired me to create Tudino Learning—so I can support not just students, but families as they navigate and feel confident in their child's learning experience every step of the way.",
   ],
   credentials: [
-    "M.Ed. · New York University",
-    "B.A. English · Vassar College",
-    "NY-certified (K–6 + 7–12 ELA)",
-    "8+ years · 240+ students",
+    "B.S. Comprehensive Special Education K-12, English Concentration",
+    "M.A. Educational Psychology, Special Education Concentration",
+    "M.A. Educational Leadership",
+    "OG Associate Level 1 Certification Candidate",
   ],
 };
 

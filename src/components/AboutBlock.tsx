@@ -4,7 +4,6 @@ import { T } from "@/lib/tokens";
 import { ABOUT_HOME } from "@/lib/data";
 import { Pill } from "./ui/Pill";
 import { BigButton } from "./ui/BigButton";
-import { ImageTile } from "./ui/ImageTile";
 import { useRouter } from "next/navigation";
 
 interface AboutBlockProps {
@@ -43,10 +42,10 @@ export function AboutBlock({ compact = false }: AboutBlockProps) {
         <div className="about-img-col" style={{ position: "relative" }}>
           <div style={{ position: "absolute", inset: -8, transform: "rotate(-3deg)", background: T.peach, borderRadius: 24 }} />
           <div style={{ position: "relative", borderRadius: 24, overflow: "hidden", background: T.paper, padding: 8, boxShadow: "0 12px 32px -8px rgba(58,37,50,0.18)" }}>
-            <ImageTile label="alyssa with coffee · stoop" bg={T.peachSoft} radius={18} h="min(420px, 65vw)" />
+            <img src="/about-block.jpg" alt="Alyssa with coffee on the stoop" style={{ width: "100%", height: "min(420px, 65vw)", objectFit: "cover", objectPosition: "50% 18%", display: "block", borderRadius: 18 }} />
           </div>
           <div style={{ position: "absolute", top: -14, right: -10, background: T.yellow, color: T.ink, fontFamily: T.script, fontSize: 28, padding: "6px 18px", borderRadius: 999, transform: "rotate(8deg)", boxShadow: "0 4px 0 rgba(58,37,50,0.1)" }}>
-            since 2017
+            since 2019
           </div>
         </div>
       </div>

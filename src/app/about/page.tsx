@@ -4,7 +4,6 @@ import { T } from "@/lib/tokens";
 import { ABOUT } from "@/lib/data";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { ImageTile } from "@/components/ui/ImageTile";
 import { Pill } from "@/components/ui/Pill";
 import { BigButton } from "@/components/ui/BigButton";
 import { SectionHeader } from "@/components/ui/SectionHeader";
@@ -31,7 +30,7 @@ export default function AboutPage() {
             <div style={{ position: "relative" }}>
               <div style={{ position: "absolute", top: -12, left: -12, right: -12, bottom: -12, background: T.peachSoft, borderRadius: 28, transform: "rotate(-3deg)" }} />
               <div style={{ position: "relative", borderRadius: 24, overflow: "hidden", padding: 8, background: T.paper, boxShadow: "0 16px 36px -10px rgba(58,37,50,0.18)" }}>
-                <ImageTile label="alyssa portrait" bg={T.pinkSoft} radius={18} h="min(560px, 75vw)" />
+                <img src="/about.jpg" alt="Alyssa portrait" style={{ width: "100%", height: "min(560px, 75vw)", objectFit: "cover", objectPosition: "50% 78%", display: "block", borderRadius: 18 }} />
               </div>
               <div style={{ position: "absolute", top: -16, right: -16, background: T.yellow, color: T.ink, fontFamily: T.script, fontSize: 30, padding: "8px 22px", borderRadius: 999, transform: "rotate(8deg)", boxShadow: "0 4px 0 rgba(58,37,50,0.12)" }}>
                 since 2019

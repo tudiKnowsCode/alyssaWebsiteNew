@@ -5,7 +5,6 @@ import { SUBJECT_PILLS } from "@/lib/data";
 import { Pill } from "./ui/Pill";
 import { BigButton } from "./ui/BigButton";
 import { WavyDivider } from "./ui/WavyDivider";
-import { ImageTile } from "./ui/ImageTile";
 import { useRouter } from "next/navigation";
 
 export function Hero() {
@@ -18,7 +17,7 @@ export function Hero() {
           <div style={{ position: "absolute", inset: -16, borderRadius: "50%", background: T.pinkSoft, transform: "rotate(8deg)" }} />
           <div style={{ position: "absolute", inset: -8, borderRadius: "50%", border: `3px dashed ${T.pink}`, opacity: 0.4 }} />
           <div style={{ position: "absolute", inset: 0, borderRadius: "50%", overflow: "hidden", border: `4px solid ${T.paper}`, boxShadow: "0 8px 24px rgba(58,37,50,0.15)" }}>
-            <ImageTile label="portrait — alyssa" bg={T.peachSoft} color={T.ink} radius={999} h="100%" />
+            <img src="/hero.jpg" alt="Alyssa" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 22%", display: "block" }} />
           </div>
           <div style={{ position: "absolute", top: -22, right: 30, width: 18, height: 18, borderRadius: "50%", background: T.yellow }} />
           <div style={{ position: "absolute", bottom: 10, left: -22, width: 12, height: 12, borderRadius: "50%", background: T.mint }} />
@@ -36,7 +35,7 @@ export function Hero() {
             className="hero-body"
             style={{ fontFamily: T.body, fontSize: 16, lineHeight: 1.6, color: T.inkSoft, marginTop: 22, maxWidth: 560 }}
           >
-            Building confidence through the K–12 years — across math, science, English, writing, and social studies.
+            <i>Supporting students in grades K–12 to build confidence, strengthen skills, and achieve success across all academic areas</i> <strong>through personalized, supportive instruction.</strong>
           </p>
           <div className="hero-cta" style={{ marginTop: 28 }}>
             <BigButton onClick={() => router.push("/contact")}>Book a free consult</BigButton>
